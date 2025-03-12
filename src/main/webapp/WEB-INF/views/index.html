@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<!--xmlns:th="http://thymeleaf.org"-->
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Все юзеры</title>
+</head>
+<body>
+
+<div th:each="us : ${users}">
+    <a th:href="@{/{id}(id=${us.getId()})}" th:text="${us.getName()}">User</a>
+    <a th:text="${us.getSurname()}">User</a>
+
+
+</div>
+
+<br><br>
+
+<a href="new"> Добавить </a>
+
+</body>
+</html>
