@@ -1,28 +1,39 @@
 package springCourse.model;
 
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
+import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
+
+@Entity
+@Table(name = "users")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
     @NotEmpty(message = "Имя не должно быть пустым")
     @Size(min = 2, max = 30, message = "минимум 2 буквы, максимум 30")
+    @Column(name = "name")
     private String name;
 
     @NotEmpty(message = "Фамилия не должна быть пустой")
     @Size(min = 2, max = 30, message = "минимум 2 буквы, максимум 30")
+    @Column(name = "surname")
     private String surname;
 
     @Min(value = 14, message = "минимальный возраст пользователя 14 лет")
+    @Column(name = "age")
     private int age;
 
     @NotEmpty(message = "укажите пол пользователя")
     @Email
+    @Column(name = "email")
     private String email;
 
     public User() {
